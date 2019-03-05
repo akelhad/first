@@ -1,0 +1,195 @@
+<html>
+
+<head>
+    <title>My ToDo List  </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=0.6, user-scalable=no, shrink-to-fit=yes">
+    <style>
+        #container{
+            width: 95%;
+            margin: 0 auto;
+            padding: 5px;
+        }
+        .icon{
+            width: 35px;
+            height: 30px;
+            vertical-align: middle;
+        }
+        .toggle{
+            margin: 5px auto;
+            position: relative;
+            width: 100%;
+            font-size: 1.4em;
+            background-color: aliceblue;
+            color: crimson;
+            border:1px dashed darkgreen;
+            
+        }
+        .closem{
+            position: absolute;
+            right: 0px;
+            width: 35px;
+            height: 30px;
+            vertical-align: middle;
+            
+        }
+        
+        .active{
+            background-color: greenyellow;
+            color: darkslateblue ;
+        }
+        input,button{
+            margin: 5px;
+            font-size: 100%;
+            padding: 5px 20px ;
+            height: 40px;
+        }
+
+            button:hover{
+                background-color:yellow ;
+                color:deeppink;
+                border: 1px solid red; 
+        }
+        .comment{
+            margin: 0 auto;
+            height: 20px;
+            padding: 6px;
+            color: white;
+            width: 99%;
+            background-color: silver;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <input id="name" value="" type="text" placeholder="todo title">
+        <input id="guests" value="" type="text" placeholder="todo description">
+        <input type="button" value="Add Item" >
+        <br> <div class="comment"> press on item to change status</div>
+        <div id="output"> </div>
+    
+    </div>
+    
+    <script>
+        
+        //json format  '[ {} , {} ]' ✓ × 
+
+        var output = document.getElementById('output');
+        var gname , gguests ; 
+        var party = [{"name":"قراءة القرأن","guests":"الجزء الاول","status":true} , {"name":"البقالة","guests":"الشاي","status":false}];
+        var ele , divs;
+        var ximg = "https://banner2.kisspng.com/20180401/jsw/kisspng-clip-art-x-mark-5ac194d3c7d310.4881160815226359878185.jpg";
+        var yimg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2BKfhBPJiJKLoVbO2EnYnzgx84GeAtcTtrXsnA8ptn47gfrW2";
+        if( ! localStorage.getItem('party') ){
+          localStorage.setItem('party' , JSON.stringify(party));
+        }
+        
+        builditems();
+        
+        var addbutton = document.querySelector('input[type="button"]');
+        addbutton.addEventListener('click' , function(){
+            gname = document.getElementById('name').value ;
+            if(gname != ""){
+                gguests = document.getElementById('guests').value ;
+
+                message(ximg,gname  + ' - ' +gguests  , party.length, '');
+
+                if( localStorage.getItem('party') ){
+                    party = JSON.parse(localStorage.getItem('party'))
+                }
+
+
+                party.push({
+                    name:gname,
+                    guests:gguests,
+                    status:false
+
+                })
+                localStorage.setItem('party' , JSON.stringify(party));
+                document.getElementById('name').value = '' ;
+                document.getElementById('guests').value = '' ;
+
+                divs = document.querySelectorAll('.toggle');
+                for(var z=0 ; z < divs.length ; z++){
+
+                    divs[z].addEventListener('click' , function(event){
+                        if( localStorage.getItem('party') ){
+                            party = JSON.parse(localStorage.getItem('party'))
+                        }
+
+                        ele = event.target;
+                        if( ele.nodeName == "IMG" && !ele.classList.contains("closem")){
+                            ele = ele.parentElement.parentElement;
+                        }
+                        if( ele.nodeName == "DIV"){
+                        var dtalist = ele.dataset;
+                        ele.classList.toggle('active');
+                        ele.children[0].children[0].src = ele.children[0].children[0].src == ximg ? yimg : ximg ;   
+                        party[dtalist.id].status = party[dtalist.id].status ? false : true;
+                        }
+
+                        localStorage.setItem('party' , JSON.stringify(party));
+                    })
+                }
+            }
+        
+        })
+        
+        function builditems(){
+            if( localStorage.getItem('party') ){
+                party = JSON.parse(localStorage.getItem('party'))
+            }
+            for(var x=0;x<party.length ;x++){
+                var person = party[x].name + ' - ' + party[x].guests  ;
+                if(party[x].status){
+                    message(yimg, person , x , 'active');
+                }else{
+                    message(ximg, person , x , '');
+                }
+            }
+            divs = document.querySelectorAll('.toggle');
+            for(var z=0 ; z < divs.length ; z++){
+                
+                divs[z].addEventListener('click' , function(event){
+                    if( localStorage.getItem('party') ){
+                        party = JSON.parse(localStorage.getItem('party'))
+                    }
+                    ele = event.target;
+                    if( ele.nodeName == "IMG" && !ele.classList.contains("closem")){
+                        ele = ele.parentElement.parentElement;
+                    }
+                    if( ele.nodeName == "DIV"){
+                    var dtalist = ele.dataset;
+                    ele.classList.toggle('active');
+                    ele.children[0].children[0].src = ele.children[0].children[0].src == ximg ? yimg : ximg ;  
+                    party[dtalist.id].status = party[dtalist.id].status ? false : true;
+                    }
+                    
+                    localStorage.setItem('party' , JSON.stringify(party));
+                })
+            }
+            
+            
+        }
+        
+        
+        function closem(t, id ){
+            var elem = t.parentElement ;
+            elem.innerHTML = '';
+            elem.remove();
+          //  t.parentNode.removeChild(t);
+            party.splice(id,1);
+            localStorage.setItem('party' , JSON.stringify(party));
+            output.innerHTML ="";
+            builditems();
+        }
+        
+        function message(m, person, id, c) {
+            output.innerHTML += '<div class="' + c + ' toggle" data-id="' + id + '" data-person="' + person + '" ><span><img src="' + m + '" class="icon" ></span> ' + person + ' <img class="closem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxKvHmK3Yp7IMkICsuFQ0NpHnTfcHqj5RONg9uTxN7MtvR294iyg" onclick="closem(this,'+ id +')" title="delete item"></div>';
+        }
+
+    </script>
+</body>
+
+</html>
