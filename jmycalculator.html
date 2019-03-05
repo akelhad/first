@@ -1,283 +1,448 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calculator Powered By Akram El Hadad </title>
 
-    <title></title>
-
-    <link href="css/fontawesome/all.css" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/jquery-ui.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/fontawesome/all.js"></script>
-    <script src="js/jquery.color.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=0.99, maximum-scale=0.99, user-scalable=no, shrink-to-fit=yes">
     <style>
-        .btn-outline-primary {
-            width: 70px;
+        html { 
+            /*   https://www.toptal.com/designers/subtlepatterns/patterns/white-waves.png     https://i.stack.imgur.com/jGlzr.png*/
+              background: url(https://www.toptal.com/designers/subtlepatterns/patterns/leaves.png) repeat center fixed; 
+              -webkit-background-size:400px 400px;
+              -moz-background-size: 400px 400px;
+              -o-background-size: 400px 400px;
+              background-size: 400px 400px;
         }
-        #screen2 {
-            color: silver;
+        body{
+            background: transparent;   /* */
+        }
+        
+        #container{
+            width: 380px;
+            margin: 0 auto;
+            padding: 5px;
+            text-align: center;
+        } 
+        input,#preview{
+            margin: 1px;
+            font-size: 110%;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 5px;
+            padding-right: 5px;
+            height: 60px;
+            width: 340px;
+            overflow: hidden;
+            background-color: #FCFDD6;
+            border: 1px silver solid;
+            text-align: left;
+            -moz-border-radius: 12px;
+            -webkit-border-radius: 12px;
+            -o-border-radius: 12px;
+            border-radius: 12px;
+        }
+        #preview{
+            margin: 1px;
+            font-size: 110%;
+            padding-top: 15px;
             height: 30px;
+            width: 330px;
+            overflow: hidden;
+            background-color: #E8E7E7;
+            border: 1px silver solid;
+            margin-left: 20px;
         }
+        button{
+            margin: 1px;
+            font-size: 110%;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 1px;
+            padding-right: 1px;
+            height: 60px;
+            width: 80px;
+        }
+        button[data-isop = '0']:active{
+            background-color:dodgerblue;
+            color: yellow;
+        }
+        button[data-isop = '1']:active{
+            background-color:red;
+            color: yellow;
+        }
+        button[data-isop = '3']:active{
+            background-color:darkorange;
+            color: yellow;
+        }
+        button[data-isop = '4']:active{
+            background-color:darkgreen;
+            color: yellow;
+        }
+        
+        .clear{
+            clear: both;
+        } 
+        
     </style>
 </head>
 
 <body>
-    <div class="container" style="width: 350px;">
-        <table class="table">
-            <tr>
-                <td colspan="4">
-                    <h2 id="screen"></h2>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <h2 id="screen2"></h2>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="11">C</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="12">del</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="%">%</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="/">/</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="1">1</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="2">2</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="3">3</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="*">X</button>
-                </td>
-            </tr>
-
-
-
-            <tr>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="4">4</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="5">5</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="6">6</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="-">-</button>
-                </td>
-            </tr>
-
-
-
-
-
-            <tr>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="7">7</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="8">8</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="9">9</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="+">+</button>
-                </td>
-            </tr>
-
-
-
-            <tr>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="18">+/-</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="0">0</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id=".">.</button>
-                </td>
-                <td>
-                    <button class="btn-outline-primary btn-lg" id="20">=</button>
-                </td>
-            </tr>
-
-
-
-        </table>
-
-
-
+    <div id="container">
+        <div>
+            <input width="450" type="text" id="output" oninput="checkscreen()">
+        </div>
+        <div id="preview">
+        </div>
+        <div>
+            <button  onclick="clearscreen()" data-isop = '3'>CE</button>
+            <button  onclick="gethistoryy()" data-isop = '3'>Hist</button>
+            <button  onclick="getlastresult()" data-isop = '3'>last</button>
+            <button  class="clacbtn"  data-val = "+" data-isop = '1'>+</button>
+        </div>
+        <div>
+            <button  class="clacbtn"  data-val = "1" data-isop = '0'>1</button>
+            <button  class="clacbtn"  data-val = "2" data-isop = '0'>2</button>
+            <button  class="clacbtn"  data-val = "3" data-isop = '0'>3</button>
+            <button  class="clacbtn"  data-val = "×" data-isop = '1'>×</button>
+        </div>
+        <div>
+            <button  class="clacbtn"  data-val = "4" data-isop = '0'>4</button>
+            <button  class="clacbtn"  data-val = "5" data-isop = '0'>5</button>
+            <button  class="clacbtn"  data-val = "6" data-isop = '0'>6</button>
+            <button  class="clacbtn"  data-val = "÷" data-isop = '1'>÷</button>
+        
+        </div>
+        <div>
+            <button  class="clacbtn"  data-val = "7" data-isop = '0'>7</button>
+            <button  class="clacbtn"  data-val = "8" data-isop = '0'>8</button>
+            <button  class="clacbtn"  data-val = "9" data-isop = '0'>9</button>
+            <button  class="clacbtn"  data-val = "-" data-isop = '1'>-</button>
+        
+        </div>
+        <div>
+            <button  onclick="adddot()"         data-isop = '3'     >.</button>
+            <button  class="clacbtn"  data-val = "0" data-isop = '0'>0</button>
+            <button  onclick="dellastele()" data-isop = '3'>del</button>
+            <button  onclick="finalresult()" data-isop = '4'> = </button>
+        
+        </div>
+    
     </div>
+    
+    <script>
 
+        var output = document.getElementById('output');
+        var preview = document.getElementById('preview'); 
+        var screen = [];
+        var holder1  = false ;
+        var holder2 = false ;
+        var holderop = false ;
+        var finalhold = 0 ;
+        var savesfinalhold = 0 ;
+        var isworking = true;
+        var isnexthigher = false;
+        var gethist = [] ;
+        var gethistxup = 0 ;
+        var gethistxdn = 1 ;
+        var oparray = ['*' , '+' ,'-' , '÷','×','/'];
+        var highoparray = ['*' , '÷','×' ,'/'];
+        var lowoparray = [ '+' ,'-' ];
+        var regxop   = new RegExp(/([-|\+|\*|\/|\÷|\×])/ , 'gi' );
+        var regxfull = new RegExp(/([0-9]{1,}[\.0-9]{0,})([-|\+|\*|\/|\÷])([0-9]{1,}[\.0-9]{0,})/ , 'gi' );
+        var isnumber = new RegExp(/([0-9]{1,})/ , 'gi' );
+        var isdotted = new RegExp(/(\.)/ , 'gi' );
+        var isprevop = false ;
+        window.onload = init ;
+        
+        function init(){
+            output.value = Number(0) ;
+            preview.innerHTML =  output.value;
+            holder1  = false ;
+            holder2 = false ;
+            holderop = false ;
+            isprevop = false ;
+            finalhold = 0 ;
+            screen = [];
+        }
+        
+        function clearscreen(){
+            output.value = Number(0) ;
+            init()
+        }
+        
+        
+        function gethistoryy(){
+            if( gethistxdn <= gethist.length ){
+                output.value = gethist[gethist.length - gethistxdn] ;
+                if(  oparray.includes( output.value[output.value.length -1] )  ){
+                    isprevop = true ;
+                }else{
+                    isprevop = false ;
+                }
 
-    <script type="text/javascript">
-        var holder = 0;
-        var prevresultholder = 0;
-        var operatorcount = 0;
-        var operatorarray = [];
-        var screenholderarray = [];
-        var regx = new RegExp(/[-|\+|\*|\/]/, 'gi');
-        var regxfull = new RegExp(/([0-9]{1,}[.0-9]{0,})([-|\+|\*|\/])([0-9]{1,}[.0-9]{0,})/, 'gi');
-
-
-        function is_operator(inp) {
-
-            var buttonuniq = Array();
-            buttonuniq = ["+", "-", "*", "/", "%"];
-            var len = buttonuniq.length;
-            for (var i = 0; i < len; i++) {
-                if (buttonuniq[i] == inp) return true;
+                if(output.value == ''){
+                    output.value = Number(0) ;
+                }
+                checkscreen()
+               // preview.innerHTML = gethist[gethist.length - gethistxdn] ;
+                gethistxdn++;
             }
-            return false;
+            if(gethistxdn >= gethist.length){
+                gethistxdn = 1;
+            }
+        }
+        
+        
+        
+        function getlastresult(){
+            output.value = savesfinalhold ;
+            preview.innerHTML = savesfinalhold ;
+        }
+        
+        
+        function dellastele(){
+            output.value = output.value.substr(0, output.value.length - 1);
+            
+            if(  oparray.includes( output.value[output.value.length -1] )  ){
+                isprevop = true ;
+            }else{
+                isprevop = false ;
+            }
+            
+            if(output.value == ''){
+                output.value = Number(0) ;
+            }
+            checkscreen()
+        }
+        
+        
+        
+        function finalresult(){
+            if( isprevop ){
+                preview.innerHTML =  'Invalid Format ..';
+                return;
+            }
+            if( !isprevop ){
+                screen = output.value.trim().split(regxop) ;
+                if(screen.length >= 3 ){
+                    checkscreen()
+                    output.value = recursivecalc(); 
+                    preview.innerHTML =  output.value;
+                    savesfinalhold =  output.value; 
+                }if(screen.length == 1 ){
+                    output.value = Number(screen[0]) == NaN ? 0 : Number(screen[0]); 
+                    preview.innerHTML =  output.value;  
+                }else{
+                    preview.innerHTML =  'Invalid Format ..';
+                }
+
+            }else{
+                preview.innerHTML =  'Invalid Format ..';
+            }
+            
+            
+            holder1  = false ;
+            holder2 = false ;
+            holderop = false ;
+            isprevop = false ;
+            finalhold = 0 ;
+        }
+        
+        
+        
+        
+        var clacbtns = document.querySelectorAll('.clacbtn');
+        
+        for(var x=0 ; x< clacbtns.length ; x++){
+            clacbtns[x].addEventListener('click' , addclacbtn );
+        }
+        
+        
+        function addclacbtn(event){
+           var target = event.target ;
+            if( isprevop && target.dataset.isop == 1 ){
+                dellastele();
+            }
+            
+            if( output.value == Number(0) &&  output.value != '0.' ){
+                if(oparray.includes(target.dataset.val )  ){
+                    
+                }else{
+                    output.value =  Number( target.dataset.val )  ;
+                    isprevop      = false ;
+                }
+                
+            }else{
+                if(oparray.includes(target.dataset.val )  ){
+                     output.value +=  target.dataset.val;
+                     isprevop      = true ;
+                }else{
+                    output.value +=  Number( target.dataset.val )  ;
+                    isprevop      = false ;
+                }
+                
+            }
+            
+            gethist[gethistxup] = output.value;
+            gethistxup++; 
+            checkscreen();
+           
+        }
+        
+        
+        
+        
+        function adddot(){
+            var outsplit = output.value ;
+            if( output.value.match(regxop) ){
+                outsplitar = output.value.split(regxop)
+                outsplit = outsplitar[outsplitar.length-1]
+            }
+            
+            if( outsplit.match(isdotted) == null ){
+                output.value += outsplit == '' ? '0.' : '.'  ;
+            }
+            
+        }
+        
+        
+        
+        function checkscreen(){
+            output.value = traverseEn(output.value).trim();
+            if(  oparray.includes( output.value[output.value.length -1] )  ){
+                isprevop = true ;
+            }else{
+                isprevop = false ;
+            }
+            preview.innerHTML = output.value ;
+            if(isprevop){
+                return;
+            }
+            
+            
+            if( output.value.match(regxop) != null ){
+                screen = output.value.trim().split(regxop) ;
+                
+                recursivecalc();
+            }
+            
+        }
+        
+        
+        
+        function recursivecalc (){
+                var sclength = screen.length ;
+                //console.log(screen)
+                if(sclength >= 3 && !isprevop){
+
+                    
+                    holder1 = Number(screen[0])
+                    holderop = screen[1]
+                    holder2 = Number(screen[2])
+                    
+                    if(lowoparray.includes(holderop) && highoparray.includes(screen[3])){
+                       isnexthigher = true;
+                    }else{
+                       isnexthigher = false;
+                    }
+                    
+                    if(highoparray.includes(holderop)&& !isprevop ) {
+                        holder1 = Number(screen[0])
+                        holderop = screen[1]
+                        holder2 = Number(screen[2])
+                        screen[0] = docalc();
+                        finalhold = screen[0] ;
+                        screen.splice(1,2);
+                        isnexthigher = false;
+                        recursivecalc ()
+                    }else if(!isnexthigher && !isprevop ){
+                        holder1 = Number(screen[0])
+                        holderop = screen[1]
+                        holder2 = Number(screen[2])
+                        screen[0] = docalc();
+                        finalhold = screen[0] ;
+                        screen.splice(1,2);
+                        isnexthigher = false;
+                        recursivecalc ()
+                   
+                    }else if(isnexthigher && !isprevop ){
+                        // do next first
+                        // rebuild
+                        holder1 = Number(screen[2])
+                        holderop = screen[3]
+                        holder2 = Number(screen[4])
+                        screen[2] = docalc();
+                        screen.splice(3,2);
+                        isnexthigher = false;
+                        recursivecalc ()
+                        
+                    }else if(isprevop){
+                        finalhold = output.value;
+                    } else{
+                        finalhold = docalc();
+                    }
+                    
+                    preview.innerHTML =  finalhold ;
+                }
+                
+                var x = 3 ;
+                    while(x +1 < screen.length){
+                    if(sclength >= x+1 && (screen[x+1] != '' || screen[x+1] != NaN) ){
+                        holder1 = Number(finalhold)
+                        holderop = screen[x]
+                        holder2 = Number(screen[x+1])
+                      //  if(isprevop){
+                       //     finalhold = output.value;
+                      //  } else{
+                            finalhold = docalc();
+                      //  }
+                        preview.innerHTML =  finalhold;
+                         
+                    }
+                    x = x+2;
+                }
+                return(finalhold);
         }
 
-
-        var screen = document.getElementById("screen");
-        screen.innerHTML = 0;
-        var screen2 = document.getElementById("screen2");
-        screen2.innerHTML = 0;
-        var httprequest = new XMLHttpRequest();
-        var httprequest2 = new XMLHttpRequest();
-
-        $(".btn-outline-primary").click(function() {
-
-            if (($(this).attr("id") == 18 || $(this).attr("id") == 12 || $(this).attr("id") == 20) && screen.innerHTML == 0) {
-                screen.innerHTML = screen.innerHTML;
-            } else if (screen.innerHTML == 0) {
-                if ($(this).attr("id") == 11) {
-                    screen.innerHTML = 0;
-                } else {
-                    screen.innerHTML = $(this).attr("id");
-                }
-
-            } else if ($(this).attr("id") == 12) {
-                if (screen.innerHTML.length == 1) {
-                    screen.innerHTML = 0;
-                } else if (screen.innerHTML == 0) {
-                    screen.innerHTML = 0;
-                } else {
-                    screen.innerHTML = screen.innerHTML.substr(0, screen.innerHTML.length - 1);
-                }
-
-            } else if ($(this).attr("id") == 11) {
-                screen.innerHTML = 0;
-            } else if ($(this).attr("id") == 18) {
-                if (screen.innerHTML[0] == '-') {
-                    screen.innerHTML = screen.innerHTML.substr(1, screen.innerHTML.length);
-                } else {
-                    screen.innerHTML = '-' + screen.innerHTML;
-                }
-            } else {
-                if ($(this).attr("id") != 20) {
-                    screen.innerHTML += $(this).attr("id");
-                }
-            }
-
-
-            var lastchecker = '';
-            var last = screen.innerHTML[screen.innerHTML.length - 1];
-            var beforelast = screen.innerHTML[screen.innerHTML.length - 2];
-            if (is_operator(beforelast)) {
-                if (is_operator(last)) {
-                    screen.innerHTML = screen.innerHTML.substr(0, screen.innerHTML.length - 2) + last;
-                }
-            }
-
-
-
-
-            if ($(this).attr("id") == 20) {}
-
-            screen2.innerHTML = loopscreen();
-
-        })
-
-
-        function findoperator() {
+            
+        
+        
+        function docalc(){
             var subfinal = 0;
-            if (operatorarray[operatorcount - 2] == '+') {
-                subfinal = Number(screenholderarray[0]) + Number(screenholderarray[1]);
+            if( holderop == '+'){
+                subfinal = holder1 + holder2;
             }
-            if (operatorarray[operatorcount - 2] == '-') {
-                subfinal = Number(screenholderarray[0]) - Number(screenholderarray[1]);
+            if( holderop == '-'){
+                subfinal = holder1 - holder2;
             }
-            if (operatorarray[operatorcount - 2] == '*') {
-                subfinal = Number(screenholderarray[0]) * Number(screenholderarray[1]);
+            if(['×','*'].includes(holderop)){
+                subfinal = holder1 * holder2;
             }
-            if (operatorarray[operatorcount - 2] == '/') {
-                subfinal = Number(screenholderarray[0]) / Number(screenholderarray[1]);
+            if(['÷','/'].includes(holderop) ){
+                subfinal = holder1 / holder2;
             }
 
-            console.log(subfinal);
-            return (subfinal)
+            return(subfinal)
+        } 
+        
+
+
+
+        function traverseEn(str) {
+            return str.replace(/۰/g,'0').replace(/۱/g,'1').replace(/۲/g,'2').replace(/۳/g,'3').replace(/۴/g,'4')
+                .replace(/۵/g,'5').replace(/۶/g,'6').replace(/۷/g,'7').replace(/۸/g,'8').replace(/۹/g,'9')
+                .replace(/٠/g,'0').replace(/١/g,'1').replace(/٢/g,'2').replace(/٣/g,'3').replace(/٤/g,'4')
+                .replace(/٥/g,'5').replace(/٦/g,'6').replace(/٧/g,'7').replace(/٨/g,'8').replace(/٩/g,'9');
         }
-
-
-
-
-        function loopscreen() {
-
-            if (screen.innerHTML.match(regx) != null) {
-
-                operatorarray = screen.innerHTML.match(regx);
-                operatorcount = operatorarray.length;
-                if (operatorcount > 1) {
-                    var sett = clearfix(screen.innerHTML.split(regxfull));
-                    console.log(sett)
-
-                    screenholderarray = screen.innerHTML.split(regx);
-                    findoperator();
-                }
-
-
-            }
-        }
-
-        function clearfix(t) {
-            var newt = [];
-            t.splice(0, 1);
-            t.pop()
-            for (var x = 0; x < t.length; x++) {
-                if (t[x] != '' || t[x] != null) {
-                    newt[x] = t[x];
-                }
-            }
-            return newt;
-        }
+        
+	// Declare Number Arrays in different locales
+	var arabicNumbers  = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
+		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"], 
+		englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+     
+        
 
     </script>
-
-
 </body>
 
 </html>
-<?php 
-echo 'hellow'; 
-if($x==1 ){ 
-    echo 2; 
-} 
-?>
