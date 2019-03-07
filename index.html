@@ -1,64 +1,144 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title> Powered By Akram El Hadad </title>
     <style>
-        html { 
+        :root {
+            --primary-background: #08080a;
+            --secondary-background: #1a0bc7;
+            --primary-text: #fff;
+            --secondary-text: #fdeffa;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
             /*   https://www.toptal.com/designers/subtlepatterns/patterns/white-waves.png     https://i.stack.imgur.com/jGlzr.png*/
-              background: url(https://www.toptal.com/designers/subtlepatterns/patterns/leaves.png) repeat fixed; 
-              -webkit-background-size:contain;
-              -moz-background-size: contain;
-              -o-background-size: contain;
-              background-size: contain;
+            background: url(https://www.toptal.com/designers/subtlepatterns/patterns/leaves.png) repeat fixed;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
         }
-        body{
-            background: transparent;   /* */
-        }
-        html,body,div,button{
-            margin: 0 auto;
-            font-size: 115%;
+
+        body {
+            background: transparent;
+            font-size: 1.6 rem;
             font-weight: bold;
-            text-align: center;
-            padding: 20px 10px;
-            
         }
+
+
+        #container {
+            width: 100%;
+            padding: 1rem;
+        }
+        .container{
+            width: 1100px;
+        }
+
+        /*
         button{
             margin-bottom: 20px;
             background-color: deeppink;
             color:white;
             border: 2px solid yellow;
-            width: 600px;
+            width: 400px;
             display: block;
         }
         button:hover{
             background-color:yellow ;
             color:deeppink;
             border: 2px solid red;
+        }*/
+        .alink,
+        a {
+            text-decoration: none;
+            color: var(--secondary-text);
+            transition: all 1s;
         }
-        a{
-            text-decoration:none; 
+
+        .backdiv {
+            text-align: left;
+            color: var(--secondary-text);
+            transition: all 2s;
+            width: 300px;
+            position: relative;
+            margin-bottom: 10px;
+            padding: 10px 5px;
         }
+
+        .backdiv:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 300px;
+            background: var(--primary-background);
+            z-index: -1;
+            transition: all 2s;
+        }
+
+        .backdiv:hover:before {
+            width: 330px;
+            color: var(--primary-text);
+            padding: 10px 5px;
+            opacity: 0.9;
+            background: var(--secondary-background);
+        }
+
+        .alink:hover {
+            color: var(--primary-text);
+        }
+
     </style>
 </head>
 
 <body>
     <div id="container">
-        <div id="output">
-            <a href="bjs08GuessCountryGame.html" target="_blank"><button> Guess Country Game</button> </a>
-            <a href="djs12 Memory game.html" target="_blank"><button> Memory Game </button>  </a>  
-            <a href="djs06 hit game.html" target="_blank"><button> Hit Game </button>  </a>  
-            <a href="jmycalculator.html" target="_blank"><button> Calculator</button>  </a>
-            <a href="z01youtube.html" target="_blank"><button> Search Youtube </button>  </a>
-            <a href="bjs02 shopping.html" target="_blank"><button> Shopping Cart WebSite </button>  </a>
-            <a href="bjs05 todolist.html" target="_blank"><button> ToDo List </button>  </a>
+        <div class="container">
+            <div id="output"> </div>
+            <div class="backdiv">
+                <a class="alink" href="bjs08GuessCountryGame.html" target="_blank"> Guess Country Game</a>
+            </div>
+            <div class="backdiv">
+                <a href="djs12 Memory game.html" target="_blank">Memory Game </a>
+            </div>
+            <div class="backdiv">
+                <a href="djs06 hit game.html" target="_blank"> Hit Game </a>
+            </div>
+            <div class="backdiv">
+                <a href="jmycalculator.html" target="_blank">Calculator</a>
+            </div>
+            <div class="backdiv">
+                <a href="z01youtube.html" target="_blank"> Search Youtube </a>
+            </div>
+            <div class="backdiv">
+                <a href="bjs02 shopping.html" target="_blank">Shopping Cart WebSite </a>
+            </div>
+            <div class="backdiv">
+                <a href="bjs05 todolist.html" target="_blank">ToDo List </a>
+            </div>
 
-            
+
+
+
+
+
         </div>
-    
-    </div>
-    
-    <script>
 
+    </div>
+
+    <script>
         var output = document.getElementById('output');
 
     </script>
