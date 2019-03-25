@@ -10,25 +10,29 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=0.99, maximum-scale=0.99, user-scalable=no, shrink-to-fit=yes">
     <style>
-        html { 
+        html {
             /*   https://www.toptal.com/designers/subtlepatterns/patterns/white-waves.png     https://i.stack.imgur.com/jGlzr.png*/
-              background: url(https://www.toptal.com/designers/subtlepatterns/patterns/leaves.png) repeat center fixed; 
-              -webkit-background-size:400px 400px;
-              -moz-background-size: 400px 400px;
-              -o-background-size: 400px 400px;
-              background-size: 400px 400px;
+            background: url(https://www.toptal.com/designers/subtlepatterns/patterns/leaves.png) repeat center fixed;
+            -webkit-background-size: 400px 400px;
+            -moz-background-size: 400px 400px;
+            -o-background-size: 400px 400px;
+            background-size: 400px 400px;
         }
-        body{
-            background: transparent;   /* */
+
+        body {
+            background: transparent;
+            /* */
         }
-        
-        #container{
+
+        #container {
             width: 380px;
             margin: 0 auto;
             padding: 5px;
             text-align: center;
-        } 
-        input,#preview{
+        }
+
+        input,
+        #preview {
             margin: 1px;
             font-size: 110%;
             padding-top: 15px;
@@ -46,7 +50,8 @@
             -o-border-radius: 12px;
             border-radius: 12px;
         }
-        #preview{
+
+        #preview {
             margin: 1px;
             font-size: 110%;
             padding-top: 15px;
@@ -57,7 +62,8 @@
             border: 1px silver solid;
             margin-left: 20px;
         }
-        button{
+
+        button {
             margin: 1px;
             font-size: 110%;
             padding-top: 15px;
@@ -67,27 +73,31 @@
             height: 60px;
             width: 80px;
         }
-        button[data-isop = '0']:active{
-            background-color:dodgerblue;
+
+        button[data-isop='0']:active {
+            background-color: dodgerblue;
             color: yellow;
         }
-        button[data-isop = '1']:active{
-            background-color:red;
+
+        button[data-isop='1']:active {
+            background-color: red;
             color: yellow;
         }
-        button[data-isop = '3']:active{
-            background-color:darkorange;
+
+        button[data-isop='3']:active {
+            background-color: darkorange;
             color: yellow;
         }
-        button[data-isop = '4']:active{
-            background-color:darkgreen;
+
+        button[data-isop='4']:active {
+            background-color: darkgreen;
             color: yellow;
         }
-        
-        .clear{
+
+        .clear {
             clear: both;
-        } 
-        
+        }
+
     </style>
 </head>
 
@@ -99,353 +109,357 @@
         <div id="preview">
         </div>
         <div>
-            <button  onclick="clearscreen()" data-isop = '3'>CE</button>
-            <button  onclick="gethistoryy()" data-isop = '3'>Hist</button>
-            <button  onclick="getlastresult()" data-isop = '3'>last</button>
-            <button  class="clacbtn"  data-val = "+" data-isop = '1'>+</button>
+            <button onclick="clearscreen()" data-isop='3'>CE</button>
+            <button onclick="gethistoryy()" data-isop='3'>Hist</button>
+            <button onclick="getlastresult()" data-isop='3'>last</button>
+            <button class="clacbtn" data-val="+" data-isop='1'>+</button>
         </div>
         <div>
-            <button  class="clacbtn"  data-val = "1" data-isop = '0'>1</button>
-            <button  class="clacbtn"  data-val = "2" data-isop = '0'>2</button>
-            <button  class="clacbtn"  data-val = "3" data-isop = '0'>3</button>
-            <button  class="clacbtn"  data-val = "×" data-isop = '1'>×</button>
+            <button class="clacbtn" data-val="1" data-isop='0'>1</button>
+            <button class="clacbtn" data-val="2" data-isop='0'>2</button>
+            <button class="clacbtn" data-val="3" data-isop='0'>3</button>
+            <button class="clacbtn" data-val="×" data-isop='1'>×</button>
         </div>
         <div>
-            <button  class="clacbtn"  data-val = "4" data-isop = '0'>4</button>
-            <button  class="clacbtn"  data-val = "5" data-isop = '0'>5</button>
-            <button  class="clacbtn"  data-val = "6" data-isop = '0'>6</button>
-            <button  class="clacbtn"  data-val = "÷" data-isop = '1'>÷</button>
-        
-        </div>
-        <div>
-            <button  class="clacbtn"  data-val = "7" data-isop = '0'>7</button>
-            <button  class="clacbtn"  data-val = "8" data-isop = '0'>8</button>
-            <button  class="clacbtn"  data-val = "9" data-isop = '0'>9</button>
-            <button  class="clacbtn"  data-val = "-" data-isop = '1'>-</button>
-        
-        </div>
-        <div>
-            <button  onclick="adddot()"         data-isop = '3'     >.</button>
-            <button  class="clacbtn"  data-val = "0" data-isop = '0'>0</button>
-            <button  onclick="dellastele()" data-isop = '3'>del</button>
-            <button  onclick="finalresult()" data-isop = '4'> = </button>
-        
-        </div>
-    
-    </div>
-    
-    <script>
+            <button class="clacbtn" data-val="4" data-isop='0'>4</button>
+            <button class="clacbtn" data-val="5" data-isop='0'>5</button>
+            <button class="clacbtn" data-val="6" data-isop='0'>6</button>
+            <button class="clacbtn" data-val="÷" data-isop='1'>÷</button>
 
+        </div>
+        <div>
+            <button class="clacbtn" data-val="7" data-isop='0'>7</button>
+            <button class="clacbtn" data-val="8" data-isop='0'>8</button>
+            <button class="clacbtn" data-val="9" data-isop='0'>9</button>
+            <button class="clacbtn" data-val="-" data-isop='1'>-</button>
+
+        </div>
+        <div>
+            <button onclick="adddot()" data-isop='3'>.</button>
+            <button class="clacbtn" data-val="0" data-isop='0'>0</button>
+            <button onclick="dellastele()" data-isop='3'>del</button>
+            <button onclick="finalresult()" data-isop='4'> = </button>
+
+        </div>
+
+    </div>
+
+    <script>
         var output = document.getElementById('output');
-        var preview = document.getElementById('preview'); 
+        var preview = document.getElementById('preview');
         var screen = [];
-        var holder1  = false ;
-        var holder2 = false ;
-        var holderop = false ;
-        var finalhold = 0 ;
-        var savesfinalhold = 0 ;
+        var holder1 = false;
+        var holder2 = false;
+        var holderop = false;
+        var finalhold = 0;
+        var savesfinalhold = 0;
         var isworking = true;
         var isnexthigher = false;
-        var gethist = [] ;
-        var gethistxup = 0 ;
-        var gethistxdn = 1 ;
-        var oparray = ['*' , '+' ,'-' , '÷','×','/'];
-        var highoparray = ['*' , '÷','×' ,'/'];
-        var lowoparray = [ '+' ,'-' ];
-        var regxop   = new RegExp(/([-|\+|\*|\/|\÷|\×])/ , 'gi' );
-        var regxfull = new RegExp(/([0-9]{1,}[\.0-9]{0,})([-|\+|\*|\/|\÷])([0-9]{1,}[\.0-9]{0,})/ , 'gi' );
-        var isnumber = new RegExp(/([0-9]{1,})/ , 'gi' );
-        var isdotted = new RegExp(/(\.)/ , 'gi' );
-        var isprevop = false ;
-        window.onload = init ;
-        
-        function init(){
-            output.value = Number(0) ;
-            preview.innerHTML =  output.value;
-            holder1  = false ;
-            holder2 = false ;
-            holderop = false ;
-            isprevop = false ;
-            finalhold = 0 ;
+        var gethist = [];
+        var gethistxup = 0;
+        var gethistxdn = 1;
+        var oparray = ['*', '+', '-', '÷', '×', '/'];
+        var highoparray = ['*', '÷', '×', '/'];
+        var lowoparray = ['+', '-'];
+        var regxop = new RegExp(/([-|\+|\*|\/|\÷|\×])/, 'gi');
+        var regxfull = new RegExp(/([0-9]{1,}[\.0-9]{0,})([-|\+|\*|\/|\÷])([0-9]{1,}[\.0-9]{0,})/, 'gi');
+        var isnumber = new RegExp(/([0-9]{1,})/, 'gi');
+        var isdotted = new RegExp(/(\.)/, 'gi');
+        var isprevop = false;
+        window.onload = init;
+
+        function init() {
+            output.value = Number(0);
+            preview.innerHTML = output.value;
+            holder1 = false;
+            holder2 = false;
+            holderop = false;
+            isprevop = false;
+            finalhold = 0;
             screen = [];
         }
-        
-        function clearscreen(){
-            output.value = Number(0) ;
+
+        function clearscreen() {
+            output.value = Number(0);
             init()
         }
-        
-        
-        function gethistoryy(){
-            if( gethistxdn <= gethist.length ){
-                output.value = gethist[gethist.length - gethistxdn] ;
-                if(  oparray.includes( output.value[output.value.length -1] )  ){
-                    isprevop = true ;
-                }else{
-                    isprevop = false ;
+
+        document.addEventListener('keypress', function(e) {
+            if (e.keyCode === 13 || e.which === 13) {
+                finalresult();
+                e.preventDefault();
+            }
+        });
+
+        function gethistoryy() {
+            if (gethistxdn <= gethist.length) {
+                output.value = gethist[gethist.length - gethistxdn];
+                if (oparray.includes(output.value[output.value.length - 1])) {
+                    isprevop = true;
+                } else {
+                    isprevop = false;
                 }
 
-                if(output.value == ''){
-                    output.value = Number(0) ;
+                if (output.value == '') {
+                    output.value = Number(0);
                 }
                 checkscreen()
-               // preview.innerHTML = gethist[gethist.length - gethistxdn] ;
+                // preview.innerHTML = gethist[gethist.length - gethistxdn] ;
                 gethistxdn++;
             }
-            if(gethistxdn >= gethist.length){
+            if (gethistxdn >= gethist.length) {
                 gethistxdn = 1;
             }
         }
-        
-        
-        
-        function getlastresult(){
-            output.value = savesfinalhold ;
-            preview.innerHTML = savesfinalhold ;
+
+
+
+        function getlastresult() {
+            output.value = savesfinalhold;
+            preview.innerHTML = savesfinalhold;
         }
-        
-        
-        function dellastele(){
+
+
+        function dellastele() {
             output.value = output.value.substr(0, output.value.length - 1);
-            
-            if(  oparray.includes( output.value[output.value.length -1] )  ){
-                isprevop = true ;
-            }else{
-                isprevop = false ;
+
+            if (oparray.includes(output.value[output.value.length - 1])) {
+                isprevop = true;
+            } else {
+                isprevop = false;
             }
-            
-            if(output.value == ''){
-                output.value = Number(0) ;
+
+            if (output.value == '') {
+                output.value = Number(0);
             }
             checkscreen()
         }
-        
-        
-        
-        function finalresult(){
-            if( isprevop ){
-                preview.innerHTML =  'Invalid Format ..';
+
+
+
+        function finalresult() {
+            if (isprevop) {
+                preview.innerHTML = 'Invalid Format ..';
                 return;
             }
-            if( !isprevop ){
-                screen = output.value.trim().split(regxop) ;
-                if(screen.length >= 3 ){
+            if (!isprevop) {
+                screen = output.value.trim().split(regxop);
+                if (screen.length >= 3) {
                     checkscreen()
-                    output.value = recursivecalc(); 
-                    preview.innerHTML =  output.value;
-                    savesfinalhold =  output.value; 
-                }if(screen.length == 1 ){
-                    output.value = Number(screen[0]) == NaN ? 0 : Number(screen[0]); 
-                    preview.innerHTML =  output.value;  
-                }else{
-                    preview.innerHTML =  'Invalid Format ..';
+                    output.value = recursivecalc();
+                    preview.innerHTML = output.value;
+                    savesfinalhold = output.value;
+                }
+                if (screen.length == 1) {
+                    output.value = Number(screen[0]) == NaN ? 0 : Number(screen[0]);
+                    preview.innerHTML = output.value;
+                } else {
+                    preview.innerHTML = 'Invalid Format ..';
                 }
 
-            }else{
-                preview.innerHTML =  'Invalid Format ..';
+            } else {
+                preview.innerHTML = 'Invalid Format ..';
             }
-            
-            
-            holder1  = false ;
-            holder2 = false ;
-            holderop = false ;
-            isprevop = false ;
-            finalhold = 0 ;
+
+
+            holder1 = false;
+            holder2 = false;
+            holderop = false;
+            isprevop = false;
+            finalhold = 0;
         }
-        
-        
-        
-        
+
+
+
+
         var clacbtns = document.querySelectorAll('.clacbtn');
-        
-        for(var x=0 ; x< clacbtns.length ; x++){
-            clacbtns[x].addEventListener('click' , addclacbtn );
+
+        for (var x = 0; x < clacbtns.length; x++) {
+            clacbtns[x].addEventListener('click', addclacbtn);
         }
-        
-        
-        function addclacbtn(event){
-           var target = event.target ;
-            if( isprevop && target.dataset.isop == 1 ){
+
+
+        function addclacbtn(event) {
+            var target = event.target;
+            if (isprevop && target.dataset.isop == 1) {
                 dellastele();
             }
-            
-            if( output.value == Number(0) &&  output.value != '0.' ){
-                if(oparray.includes(target.dataset.val )  ){
-                    
-                }else{
-                    output.value =  Number( target.dataset.val )  ;
-                    isprevop      = false ;
+
+            if (output.value == Number(0) && output.value != '0.') {
+                if (oparray.includes(target.dataset.val)) {
+
+                } else {
+                    output.value = Number(target.dataset.val);
+                    isprevop = false;
                 }
-                
-            }else{
-                if(oparray.includes(target.dataset.val )  ){
-                     output.value +=  target.dataset.val;
-                     isprevop      = true ;
-                }else{
-                    output.value +=  Number( target.dataset.val )  ;
-                    isprevop      = false ;
+
+            } else {
+                if (oparray.includes(target.dataset.val)) {
+                    output.value += target.dataset.val;
+                    isprevop = true;
+                } else {
+                    output.value += Number(target.dataset.val);
+                    isprevop = false;
                 }
-                
+
             }
-            
+
             gethist[gethistxup] = output.value;
-            gethistxup++; 
+            gethistxup++;
             checkscreen();
-           
+
         }
-        
-        
-        
-        
-        function adddot(){
-            var outsplit = output.value ;
-            if( output.value.match(regxop) ){
+
+
+
+
+        function adddot() {
+            var outsplit = output.value;
+            if (output.value.match(regxop)) {
                 outsplitar = output.value.split(regxop)
-                outsplit = outsplitar[outsplitar.length-1]
+                outsplit = outsplitar[outsplitar.length - 1]
             }
-            
-            if( outsplit.match(isdotted) == null ){
-                output.value += outsplit == '' ? '0.' : '.'  ;
+
+            if (outsplit.match(isdotted) == null) {
+                output.value += outsplit == '' ? '0.' : '.';
             }
-            
+
         }
-        
-        
-        
-        function checkscreen(){
+
+
+
+        function checkscreen() {
             output.value = traverseEn(output.value).trim();
-            if(  oparray.includes( output.value[output.value.length -1] )  ){
-                isprevop = true ;
-            }else{
-                isprevop = false ;
+            if (oparray.includes(output.value[output.value.length - 1])) {
+                isprevop = true;
+            } else {
+                isprevop = false;
             }
-            preview.innerHTML = output.value ;
-            if(isprevop){
+            preview.innerHTML = output.value;
+            if (isprevop) {
                 return;
             }
-            
-            
-            if( output.value.match(regxop) != null ){
-                screen = output.value.trim().split(regxop) ;
-                
+
+
+            if (output.value.match(regxop) != null) {
+                screen = output.value.trim().split(regxop);
+
                 recursivecalc();
             }
-            
-        }
-        
-        
-        
-        function recursivecalc (){
-                var sclength = screen.length ;
-                //console.log(screen)
-                if(sclength >= 3 && !isprevop){
 
-                    
+        }
+
+
+
+        function recursivecalc() {
+            var sclength = screen.length;
+            //console.log(screen)
+            if (sclength >= 3 && !isprevop) {
+
+
+                holder1 = Number(screen[0])
+                holderop = screen[1]
+                holder2 = Number(screen[2])
+
+                if (lowoparray.includes(holderop) && highoparray.includes(screen[3])) {
+                    isnexthigher = true;
+                } else {
+                    isnexthigher = false;
+                }
+
+                if (highoparray.includes(holderop) && !isprevop) {
                     holder1 = Number(screen[0])
                     holderop = screen[1]
                     holder2 = Number(screen[2])
-                    
-                    if(lowoparray.includes(holderop) && highoparray.includes(screen[3])){
-                       isnexthigher = true;
-                    }else{
-                       isnexthigher = false;
-                    }
-                    
-                    if(highoparray.includes(holderop)&& !isprevop ) {
-                        holder1 = Number(screen[0])
-                        holderop = screen[1]
-                        holder2 = Number(screen[2])
-                        screen[0] = docalc();
-                        finalhold = screen[0] ;
-                        screen.splice(1,2);
-                        isnexthigher = false;
-                        recursivecalc ()
-                    }else if(!isnexthigher && !isprevop ){
-                        holder1 = Number(screen[0])
-                        holderop = screen[1]
-                        holder2 = Number(screen[2])
-                        screen[0] = docalc();
-                        finalhold = screen[0] ;
-                        screen.splice(1,2);
-                        isnexthigher = false;
-                        recursivecalc ()
-                   
-                    }else if(isnexthigher && !isprevop ){
-                        // do next first
-                        // rebuild
-                        holder1 = Number(screen[2])
-                        holderop = screen[3]
-                        holder2 = Number(screen[4])
-                        screen[2] = docalc();
-                        screen.splice(3,2);
-                        isnexthigher = false;
-                        recursivecalc ()
-                        
-                    }else if(isprevop){
-                        finalhold = output.value;
-                    } else{
-                        finalhold = docalc();
-                    }
-                    
-                    preview.innerHTML =  finalhold ;
+                    screen[0] = docalc();
+                    finalhold = screen[0];
+                    screen.splice(1, 2);
+                    isnexthigher = false;
+                    recursivecalc()
+                } else if (!isnexthigher && !isprevop) {
+                    holder1 = Number(screen[0])
+                    holderop = screen[1]
+                    holder2 = Number(screen[2])
+                    screen[0] = docalc();
+                    finalhold = screen[0];
+                    screen.splice(1, 2);
+                    isnexthigher = false;
+                    recursivecalc()
+
+                } else if (isnexthigher && !isprevop) {
+                    // do next first
+                    // rebuild
+                    holder1 = Number(screen[2])
+                    holderop = screen[3]
+                    holder2 = Number(screen[4])
+                    screen[2] = docalc();
+                    screen.splice(3, 2);
+                    isnexthigher = false;
+                    recursivecalc()
+
+                } else if (isprevop) {
+                    finalhold = output.value;
+                } else {
+                    finalhold = docalc();
                 }
-                
-                var x = 3 ;
-                    while(x +1 < screen.length){
-                    if(sclength >= x+1 && (screen[x+1] != '' || screen[x+1] != NaN) ){
-                        holder1 = Number(finalhold)
-                        holderop = screen[x]
-                        holder2 = Number(screen[x+1])
-                      //  if(isprevop){
-                       //     finalhold = output.value;
-                      //  } else{
-                            finalhold = docalc();
-                      //  }
-                        preview.innerHTML =  finalhold;
-                         
-                    }
-                    x = x+2;
+
+                preview.innerHTML = finalhold;
+            }
+
+            var x = 3;
+            while (x + 1 < screen.length) {
+                if (sclength >= x + 1 && (screen[x + 1] != '' || screen[x + 1] != NaN)) {
+                    holder1 = Number(finalhold)
+                    holderop = screen[x]
+                    holder2 = Number(screen[x + 1])
+                    //  if(isprevop){
+                    //     finalhold = output.value;
+                    //  } else{
+                    finalhold = docalc();
+                    //  }
+                    preview.innerHTML = finalhold;
+
                 }
-                return(finalhold);
+                x = x + 2;
+            }
+            return (finalhold);
         }
 
-            
-        
-        
-        function docalc(){
+
+
+
+        function docalc() {
             var subfinal = 0;
-            if( holderop == '+'){
+            if (holderop == '+') {
                 subfinal = holder1 + holder2;
             }
-            if( holderop == '-'){
+            if (holderop == '-') {
                 subfinal = holder1 - holder2;
             }
-            if(['×','*'].includes(holderop)){
+            if (['×', '*'].includes(holderop)) {
                 subfinal = holder1 * holder2;
             }
-            if(['÷','/'].includes(holderop) ){
+            if (['÷', '/'].includes(holderop)) {
                 subfinal = holder1 / holder2;
             }
 
-            return(subfinal)
-        } 
-        
+            return (subfinal)
+        }
+
 
 
 
         function traverseEn(str) {
-            return str.replace(/۰/g,'0').replace(/۱/g,'1').replace(/۲/g,'2').replace(/۳/g,'3').replace(/۴/g,'4')
-                .replace(/۵/g,'5').replace(/۶/g,'6').replace(/۷/g,'7').replace(/۸/g,'8').replace(/۹/g,'9')
-                .replace(/٠/g,'0').replace(/١/g,'1').replace(/٢/g,'2').replace(/٣/g,'3').replace(/٤/g,'4')
-                .replace(/٥/g,'5').replace(/٦/g,'6').replace(/٧/g,'7').replace(/٨/g,'8').replace(/٩/g,'9');
+            return str.replace(/۰/g, '0').replace(/۱/g, '1').replace(/۲/g, '2').replace(/۳/g, '3').replace(/۴/g, '4')
+                .replace(/۵/g, '5').replace(/۶/g, '6').replace(/۷/g, '7').replace(/۸/g, '8').replace(/۹/g, '9')
+                .replace(/٠/g, '0').replace(/١/g, '1').replace(/٢/g, '2').replace(/٣/g, '3').replace(/٤/g, '4')
+                .replace(/٥/g, '5').replace(/٦/g, '6').replace(/٧/g, '7').replace(/٨/g, '8').replace(/٩/g, '9');
         }
-        
-	// Declare Number Arrays in different locales
-	var arabicNumbers  = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"], 
-		englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-     
-        
+
+        // Declare Number Arrays in different locales
+        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
+            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"],
+            englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
     </script>
 </body>
